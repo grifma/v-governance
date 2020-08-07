@@ -5,3 +5,8 @@ cache
 dist
 ipfs.cmd
 package-lock.json
+unused
+app/node-modules
+app/.cache
+.vscode
+mnemonic.txt

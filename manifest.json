@@ -1,7 +1,7 @@
 {
-  "name": "placeholder-app-name",
-  "author": "Placeholder-author",
-  "description": "An application for Aragon",
+  "name": "v-governance",
+  "author": "Marc Griffiths",
+  "description": "Decentralised governance for Value Instrument based currencies",
   "details_url": "/meta/details.md",
   "source_url": "https://<placeholder-repository-url>",
   "icons": [
