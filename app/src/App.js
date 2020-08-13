@@ -55,6 +55,7 @@ function App() {
         onChange={setSelectedTab}
       />
       {selectedTab == 0 && (
+        //OVERVIEW TAB
         <Box
           css={`
             display: flex;
@@ -69,103 +70,8 @@ function App() {
           <p>Total supply : {totalSupply}</p>
         </Box>
       )}
-      {
-        //OVERVIEW TAB
-        selectedTab == 1 && (
-          <Box
-            css={`
-              display: flex;
-              align-items: center;
-              justify-content: center;
-              text-align: center;
-              height: ${50 * GU}px;
-              ${textStyle("title3")};
-            `}
-          >
-            Under development
-          </Box>
-        )
-      }
-      {
-        //ACCOUNTS TAB
-        selectedTab == 2 && (
-          <Box
-            css={`
-              display: flex;
-              flex-direction: column;
-              align-items: center;
-              justify-content: center;
-              text-align: center;
-              height: ${50 * GU}px;
-              ${textStyle("title3")};
-            `}
-          >
-            <div
-              css={`
-                display: flex;
-                flex-direction: row;
-                align-items: center;
-                justify-content: center;
-                text-align: center;
-                height: ${10 * GU}px;
-              `}
-            >
-              Verify account:&nbsp;
-              <TextInput
-                label="Verify account"
-                value={txtVerifyAccount}
-                onChange={(event) => {
-                  setTxtVerifyAccount(event.target.value);
-                }}
-              ></TextInput>
-              <Button
-                display="icon"
-                icon={<IconPlus />}
-                label="Verify"
-                mode="positive"
-                onClick={() => {
-                  api.verifyAccount(txtVerifyAccount).toPromise();
-                }}
-                css={`
-                  margin-left: ${2 * GU}px;
-                `}
-              />
-            </div>
-            <div
-              css={`
-                display: flex;
-                flex-direction: row;
-                align-items: center;
-                justify-content: center;
-                text-align: center;
-                height: ${10 * GU}px;
-              `}
-            >
-              Unapprove Account:&nbsp;
-              <TextInput
-                label="Unapprove account"
-                value={txtUnapproveAccount}
-                onChange={(event) => {
-                  setTxtUnapproveAccount(event.target.value);
-                }}
-              ></TextInput>
-              <Button
-                display="icon"
-                icon={<IconMinus />}
-                label="Unapprove"
-                mode="negative"
-                onClick={() => {
-                  api.unapproveAccount(txtUnapproveAccount).toPromise();
-                }}
-                css={`
-                  margin-left: ${2 * GU}px;
-                `}
-              />
-            </div>
-          </Box>
-        )
-      }
-      {selectedTab == 3 && (
+      {selectedTab == 1 && (
+        //ECONOMIC PARAMETERS TAB
         <Box
           css={`
             display: flex;
@@ -176,7 +82,99 @@ function App() {
             ${textStyle("title3")};
           `}
         >
-          Under development
+          Disabled
+        </Box>
+      )}
+      {selectedTab == 2 && (
+        //ACCOUNTS TAB
+        <Box
+          css={`
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            text-align: center;
+            height: ${50 * GU}px;
+            ${textStyle("title3")};
+          `}
+        >
+          <div
+            css={`
+              display: flex;
+              flex-direction: row;
+              align-items: center;
+              justify-content: center;
+              text-align: center;
+              height: ${10 * GU}px;
+            `}
+          >
+            Verify account:&nbsp;
+            <TextInput
+              label="Verify account"
+              value={txtVerifyAccount}
+              onChange={(event) => {
+                setTxtVerifyAccount(event.target.value);
+              }}
+            ></TextInput>
+            <Button
+              display="icon"
+              icon={<IconPlus />}
+              label="Verify"
+              mode="positive"
+              onClick={() => {
+                api.verifyAccount(txtVerifyAccount).toPromise();
+              }}
+              css={`
+                margin-left: ${2 * GU}px;
+              `}
+            />
+          </div>
+          <div
+            css={`
+              display: flex;
+              flex-direction: row;
+              align-items: center;
+              justify-content: center;
+              text-align: center;
+              height: ${10 * GU}px;
+            `}
+          >
+            Unapprove Account:&nbsp;
+            <TextInput
+              label="Unapprove account"
+              value={txtUnapproveAccount}
+              onChange={(event) => {
+                setTxtUnapproveAccount(event.target.value);
+              }}
+            ></TextInput>
+            <Button
+              display="icon"
+              icon={<IconMinus />}
+              label="Unapprove"
+              mode="negative"
+              onClick={() => {
+                api.unapproveAccount(txtUnapproveAccount).toPromise();
+              }}
+              css={`
+                margin-left: ${2 * GU}px;
+              `}
+            />
+          </div>
+        </Box>
+      )}
+      {selectedTab == 3 && (
+        //FUSES TAB
+        <Box
+          css={`
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            text-align: center;
+            height: ${50 * GU}px;
+            ${textStyle("title3")};
+          `}
+        >
+          Disabled
         </Box>
       )}
       {

@@ -5,13 +5,6 @@ const private = require("./private");
 
 usePlugin("@aragon/buidler-aragon");
 
-// let mnemonic = "";
-// try {
-//   mnemonic = fs.readFileSync("./mnemonic.txt").toString().trim();
-// } catch (e) {
-//   /* ignore for now because it might now have a mnemonic.txt file */
-// }
-
 const DEBUG = true;
 
 task("accounts", "Prints the list of accounts", async () => {
@@ -34,7 +27,7 @@ task("balance", "Prints an account's balance")
   });
 
 task("send", "Send ETH")
-  .addParam("from", "From address or account index")
+  .addParam("from", "From address or account index")git 
   .addOptionalParam("to", "To address or account index")
   .addOptionalParam("amount", "Amount to send in ether")
   .addOptionalParam("data", "Data included in transaction")
@@ -103,19 +96,6 @@ async function addr(addr) {
   }
 }
 
-const INFURA_PROJECT_ID = "3bbc6e7cc2eb4aa7a23c15a7fffbe5e3";
-
-let KOVAN_PRIVATE_KEY = "";
-try {
-  KOVAN_PRIVATE_KEY = fs.readFileSync("./private.txt").toString().trim();
-} catch (e) {
-  console.log("private.txt not found");
-  KOVAN_PRIVATE_KEY =
-    "db0d477d05e8925146f2bdfa1d74882f196f6a6ab0f13553c19ecea4e6682f8a";
-}
-//kovan.infura.io/v3/3bbc6e7cc2eb4aa7a23c15a7fffbe5e3
-//kovan.infura.io/ws/v3/3bbc6e7cc2eb4aa7a23c15a7fffbe5e3
-
 module.exports = {
   defaultNetwork: "localhost",
   networks: {
@@ -124,12 +104,12 @@ module.exports = {
     },
     devvps: {
       url: "http://161.97.97.238:8547",
-      accounts: [`0x${private.devvpsKeys[0]}`],
+      accounts: [`0x${private.DEVVPS_KEYS[0]}`],
     },
     buidlerevm: {},
     kovan: {
-      url: `https://kovan.infura.io/v3/${INFURA_PROJECT_ID}`,
-      accounts: [`0x${KOVAN_PRIVATE_KEY}`],
+      url: `https://kovan.infura.io/v3/${private.INFURA_PROJECT_ID}`,
+      accounts: [`0x${private.KOVAN_PRIVATE_KEY}`],
     },
   },
   solc: {
@@ -140,7 +120,7 @@ module.exports = {
     },
   },
   etherscan: {
-    apiKey: "7CPVADD1K7YVN17EDB7QU4XZNSDUW1XYFR",
+    apiKey: private.ETHERSCAN_APIKEY,
   },
   aragon: {
     appServePort: 8001,

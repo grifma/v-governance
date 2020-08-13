@@ -57,18 +57,13 @@ function initializeState() {
 }
 
 async function getName() {
-  // return "Name";
   return await app.call("name").toPromise();
 }
 
 async function getGovernedContractAddress() {
-  // return "0x8401Eb5ff34cc943f096A32EF3d5113FEbE8D4Eb";
-  // console.log("===getGovernedContractAddress===");
-  // console.log(await app.call("viCoin").toPromise());
   return await app.call("viCoin").toPromise();
 }
 
 async function getTotalSupply() {
-  return 0;
-  // return await app.call("totalSupply").toPromise();
+  return await app.call("totalSupply").toPromise();
 }
