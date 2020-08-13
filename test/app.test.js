@@ -158,9 +158,15 @@ contract("VCommunityApp", ([appManager, user]) => {
       await app.UPDATETRANSACTIONFEE(),
       appManager
     );
+    await setOpenPermission(
+      acl,
+      app.address,
+      await app.TERMINATE(),
+      appManager
+    );
 
     // Initialize the app's proxy.
-    await app.initialize(viCoin.address, "Initialized name -- app.test.js");
+    // await app.initialize(viCoin.address, "Initialized name -- app.test.js");
   });
 
   it("does nothing", async () => {

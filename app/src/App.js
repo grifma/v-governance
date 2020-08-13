@@ -18,13 +18,7 @@ import TextInput from "@aragon/ui/dist/TextInput";
 
 function App() {
   const { api, appState, path, requestPath } = useAragonApi();
-  var {
-    count,
-    isSyncing,
-    name,
-    governedContractAddress,
-    totalSupply,
-  } = appState;
+  var { isSyncing, name, governedContractAddress, totalSupply } = appState;
   console.info("appState -->> ", appState);
   const [txtGovernedContractAddress, setTxtGovernedContractAddress] = useState(
     governedContractAddress

@@ -19,7 +19,9 @@ module.exports = {
   postDao: async (
     { dao, _experimentalAppInstaller, log },
     { web3, artifacts }
-  ) => {},
+  ) => {
+    console.log("dao :>> ", dao);
+  },
 
   // Called after the app's proxy is created, but before it's initialized.
   preInit: async (

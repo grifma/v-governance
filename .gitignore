@@ -10,3 +10,7 @@ app/node-modules
 app/.cache
 .vscode
 mnemonic.txt
+private.txt
+.gitignore
+truffle-config.js
+private.js

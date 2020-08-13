@@ -9,7 +9,6 @@ import App from "./App";
 const reducer = (state) => {
   if (state === null) {
     return {
-      count: 0,
       isSyncing: true,
       governedContractAddress: "0x0D13999edC23D3475Ed3FE22a15Cc7828FeCD762",
       name: "Name Not Set",

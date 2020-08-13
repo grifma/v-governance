@@ -23,10 +23,6 @@ app.store(
             ...nextState,
             governedContractAddress: await getGovernedContractAddress(),
           };
-        case "Increment":
-          return { ...nextState, count: await getValue() };
-        case "Decrement":
-          return { ...nextState, count: await getValue() };
         case events.SYNC_STATUS_SYNCING:
           return { ...nextState, isSyncing: true };
         case events.SYNC_STATUS_SYNCED:
@@ -53,17 +49,11 @@ function initializeState() {
   return async (cachedState) => {
     return {
       ...cachedState,
-      count: await getValue(),
       name: await getName(),
       governedContractAddress: await getGovernedContractAddress(),
       totalSupply: await getTotalSupply(),
     };
   };
-}
-
-async function getValue() {
-  // return parseInt(1);
-  return parseInt(await app.call("value").toPromise(), 10);
 }
 
 async function getName() {
@@ -79,5 +69,6 @@ async function getGovernedContractAddress() {
 }
 
 async function getTotalSupply() {
-  return await app.call("totalSupply").toPromise();
+  return 0;
+  // return await app.call("totalSupply").toPromise();
 }
