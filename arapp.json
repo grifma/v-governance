@@ -6,18 +6,13 @@
       "params": []
     },
     {
-      "name": "Approve account",
-      "id": "APPROVEACCOUNT",
-      "params": []
-    },
-    {
       "name": "Unapprove account",
       "id": "UNAPPROVEACCOUNT",
       "params": []
     },
     {
       "name": "Change community contribution amount",
-      "id": "CHANGECOMMUNITYCONTRIBUTIONACCOUNT",
+      "id": "UPDATECOMMUNITYCONTRIBUTIONACCOUNT",
       "params": []
     },
     {

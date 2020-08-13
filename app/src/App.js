@@ -141,37 +141,6 @@ function App() {
                 height: ${10 * GU}px;
               `}
             >
-              Approve account:&nbsp;
-              <TextInput
-                label="Approve account"
-                value={txtApproveAccount}
-                onChange={(event) => {
-                  setTxtApproveAccount(event.target.value);
-                }}
-              ></TextInput>
-              <Button
-                display="icon"
-                icon={<IconPlus />}
-                label="Approve"
-                mode="positive"
-                onClick={() => {
-                  api.approveAccount(txtApproveAccount).toPromise();
-                }}
-                css={`
-                  margin-left: ${2 * GU}px;
-                `}
-              />
-            </div>
-            <div
-              css={`
-                display: flex;
-                flex-direction: row;
-                align-items: center;
-                justify-content: center;
-                text-align: center;
-                height: ${10 * GU}px;
-              `}
-            >
               Unapprove Account:&nbsp;
               <TextInput
                 label="Unapprove account"

@@ -1,6 +1,8 @@
 const { usePlugin } = require("@nomiclabs/buidler/config");
 // usePlugin("@nomiclabs/buidler-truffle5");
 const hooks = require("./scripts/buidler-hooks");
+const private = require("./private");
+
 usePlugin("@aragon/buidler-aragon");
 
 // let mnemonic = "";
@@ -119,6 +121,10 @@ module.exports = {
   networks: {
     localhost: {
       url: "http://localhost:8545",
+    },
+    devvps: {
+      url: "http://161.97.97.238:8547",
+      accounts: [`0x${private.devvpsKeys[0]}`],
     },
     buidlerevm: {},
     kovan: {
