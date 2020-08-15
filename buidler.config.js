@@ -27,7 +27,7 @@ task("balance", "Prints an account's balance")
   });
 
 task("send", "Send ETH")
-  .addParam("from", "From address or account index")git 
+  .addParam("from", "From address or account index")
   .addOptionalParam("to", "To address or account index")
   .addOptionalParam("amount", "Amount to send in ether")
   .addOptionalParam("data", "Data included in transaction")
@@ -99,8 +99,12 @@ async function addr(addr) {
 module.exports = {
   defaultNetwork: "localhost",
   networks: {
+    // localhost: {
+    //   url: "http://localhost:8545",
+    // },
     localhost: {
-      url: "http://localhost:8545",
+      url: "http://161.97.97.238:8547",
+      accounts: [`0x${private.DEVVPS_KEYS[0]}`],
     },
     devvps: {
       url: "http://161.97.97.238:8547",

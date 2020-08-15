@@ -23,6 +23,16 @@ app.store(
             ...nextState,
             governedContractAddress: await getGovernedContractAddress(),
           };
+        case "UpdateTransactionFee":
+          return {
+            ...nextState,
+            transactionFee: await getTransactionFee(),
+          };
+        case "UpdateCommunityContribution":
+          return {
+            ...nextState,
+            communityContribution: await getCommunityContribution(),
+          };
         case events.SYNC_STATUS_SYNCING:
           return { ...nextState, isSyncing: true };
         case events.SYNC_STATUS_SYNCED:
@@ -52,6 +62,8 @@ function initializeState() {
       name: await getName(),
       governedContractAddress: await getGovernedContractAddress(),
       totalSupply: await getTotalSupply(),
+      transactionFee: await getTransactionFee(),
+      communityContribution: await getCommunityContribution(),
     };
   };
 }
@@ -66,4 +78,12 @@ async function getGovernedContractAddress() {
 
 async function getTotalSupply() {
   return await app.call("totalSupply").toPromise();
+}
+
+async function getTransactionFee() {
+  return await app.call("getTransactionFee").toPromise();
+}
+
+async function getCommunityContribution() {
+  return await app.call("getCommunityContribution").toPromise();
 }

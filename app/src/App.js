@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useState, ErrorBoundary } from "react";
 import { useAragonApi } from "@aragon/api-react";
 import {
   Box,
@@ -7,18 +7,28 @@ import {
   Header,
   IconMinus,
   IconPlus,
+  IconSettings,
+  IconEthereum,
   Main,
   SyncIndicator,
   Tabs,
   Text,
   textStyle,
+  TokenAmount,
 } from "@aragon/ui";
 import styled from "styled-components";
 import TextInput from "@aragon/ui/dist/TextInput";
 
 function App() {
   const { api, appState, path, requestPath } = useAragonApi();
-  var { isSyncing, name, governedContractAddress, totalSupply } = appState;
+  var {
+    isSyncing,
+    name,
+    governedContractAddress,
+    totalSupply,
+    transactionFee,
+    communityContribution,
+  } = appState;
   console.info("appState -->> ", appState);
   const [txtGovernedContractAddress, setTxtGovernedContractAddress] = useState(
     governedContractAddress
@@ -26,6 +36,11 @@ function App() {
   const [txtVerifyAccount, setTxtVerifyAccount] = useState("");
   const [txtUnapproveAccount, setTxtUnapproveAccount] = useState("");
   const [txtApproveAccount, setTxtApproveAccount] = useState("");
+  const [txtCommunityContribution, setTxtCommunityContribution] = useState(
+    communityContribution
+  );
+  const [txtTransactionFee, setTxtTransactionFee] = useState(transactionFee);
+  const [txtFuseId, setTxtFuseId] = useState(0);
   const [selectedTab, setSelectedTab] = useState(0);
 
   return (
@@ -50,6 +65,7 @@ function App() {
           "Accounts", //2
           "Fuses", //3
           "Governed contract", //4
+          "Experimental", //5
         ]}
         selected={selectedTab}
         onChange={setSelectedTab}
@@ -68,6 +84,13 @@ function App() {
         >
           <p>Overview for : {name}</p>
           <p>Total supply : {totalSupply}</p>
+          {/* <ErrorBoundary>
+            <TokenAmount
+              address={"0x6B175474E89094C44Da98b954EedeAC495271d0F"}
+              amount={totalSupply}
+              decimals={18}
+            />
+          </ErrorBoundary> */}
         </Box>
       )}
       {selectedTab == 1 && (
@@ -82,7 +105,50 @@ function App() {
             ${textStyle("title3")};
           `}
         >
-          Disabled
+          <div>
+            Community contribution: (to 2 decimal places)
+            <TextInput
+              label="Community contribution"
+              value={txtCommunityContribution}
+              onChange={(event) => {
+                setTxtCommunityContribution(event.target.value);
+              }}
+            ></TextInput>
+            <Button
+              display="icon"
+              icon={<IconSettings />}
+              label="Set"
+              onClick={() => {
+                api
+                  .updateCommunityContribution(txtCommunityContribution)
+                  .toPromise();
+              }}
+              css={`
+                margin-left: ${2 * GU}px;
+              `}
+            />
+          </div>
+          <div>
+            Transaction fee: (to 2 decimal places)
+            <TextInput
+              label="Transaction fee"
+              value={txtTransactionFee}
+              onChange={(event) => {
+                setTxtTransactionFee(event.target.value);
+              }}
+            ></TextInput>
+            <Button
+              display="icon"
+              icon={<IconSettings />}
+              label="Set"
+              onClick={() => {
+                api.updateTransactionFee(txtTransactionFee).toPromise();
+              }}
+              css={`
+                margin-left: ${2 * GU}px;
+              `}
+            />
+          </div>
         </Box>
       )}
       {selectedTab == 2 && (
@@ -174,7 +240,28 @@ function App() {
             ${textStyle("title3")};
           `}
         >
-          Disabled
+          <div>
+            Permanently lock setting with ID:
+            <TextInput
+              label="Fuse ID"
+              value={txtFuseId}
+              onChange={(event) => {
+                setTxtFuseId(event.target.value);
+              }}
+            ></TextInput>
+            <Button
+              display="icon"
+              icon={<IconEthereum />}
+              label="Set"
+              mode="negative"
+              onClick={() => {
+                api.blowFuse(txtFuseId, true).toPromise();
+              }}
+              css={`
+                margin-left: ${2 * GU}px;
+              `}
+            />
+          </div>
         </Box>
       )}
       {
@@ -207,6 +294,23 @@ function App() {
           </Box>
         )
       }
+      {
+        // //EXPERIMENTAL TAB
+        // selectedTab == 5 && (
+        //   <Box
+        //     css={`
+        //       display: flex;
+        //       align-items: center;
+        //       justify-content: center;
+        //       text-align: center;
+        //       height: ${50 * GU}px;
+        //       ${textStyle("title3")};
+        //     `}
+        //   >
+        //     <TotalSupply totalSupply={totalSupply} />
+        //   </Box>
+        // )
+      }
     </Main>
   );
 }
@@ -217,5 +321,26 @@ const Buttons = styled.div`
   grid-gap: 40px;
   margin-top: 20px;
 `;
+
+const TotalSupply = ({ totalSupply }) => {
+  return (
+    <ErrorBoundary>
+      <TokenAmount
+        address={"0x6B175474E89094C44Da98b954EedeAC495271d0F"}
+        amount={totalSupply}
+        decimals={18}
+      />
+    </ErrorBoundary>
+  );
+};
+// const TotalSupply = (
+//   <ErrorBoundary>
+//     <TokenAmount
+//       address={"0x6B175474E89094C44Da98b954EedeAC495271d0F"}
+//       amount={totalSupply}
+//       decimals={18}
+//     />
+//   </ErrorBoundary>
+// );
 
 export default App;

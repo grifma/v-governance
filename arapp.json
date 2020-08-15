@@ -42,7 +42,7 @@
     },
     {
       "name": "Change controller of governed token",
-      "id": "CHANGECONTROLLER",
+      "id": "UPDATECONTROLLER",
       "params": []
     },
     {
@@ -60,6 +60,17 @@
       "id": "UPDATETRANSACTIONFEE",
       "params": []
     },
+    {
+      "name": "Change currency name",
+      "id": "UPDATENAME",
+      "params": []
+    },
+    {
+      "name": "Change currency symbol",
+      "id": "UPDATESYMBOL",
+      "params": []
+    },
+
     {
       "name": "Terminate the currency / DAO",
       "id": "TERMINATE",

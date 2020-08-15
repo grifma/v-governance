@@ -142,7 +142,7 @@ contract("VCommunityApp", ([appManager, user]) => {
     await setOpenPermission(
       acl,
       app.address,
-      await app.CHANGECONTROLLER(),
+      await app.UPDATECONTROLLER(),
       appManager
     );
     await setOpenPermission(acl, app.address, await app.BLOWFUSE(), appManager);
