@@ -99,13 +99,13 @@ async function addr(addr) {
 module.exports = {
   defaultNetwork: "localhost",
   networks: {
-    // localhost: {
-    //   url: "http://localhost:8545",
-    // },
     localhost: {
-      url: "http://161.97.97.238:8547",
-      accounts: [`0x${private.DEVVPS_KEYS[0]}`],
+      url: "http://localhost:8545",
     },
+    // localhost: {
+    //   url: "http://161.97.97.238:8547",
+    //   accounts: [`0x${private.DEVVPS_KEYS[0]}`],
+    // },
     devvps: {
       url: "http://161.97.97.238:8547",
       accounts: [`0x${private.DEVVPS_KEYS[0]}`],
@@ -127,7 +127,7 @@ module.exports = {
     apiKey: private.ETHERSCAN_APIKEY,
   },
   aragon: {
-    appServePort: 8001,
+    appServePort: 8011,
     clientServePort: 3000,
     appSrcPath: "app/",
     appBuildOutputPath: "dist/",

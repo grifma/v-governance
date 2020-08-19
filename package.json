@@ -1,6 +1,6 @@
 {
   "name": "v-governance",
-  "version": "0.1.0",
+  "version": "0.2.0",
   "description": "Decentralised governance for Value Instrument based currencies",
   "scripts": {
     "postinstall": "npm run compile && npm run build-app",
@@ -13,7 +13,8 @@
     "publish:patch": "buidler publish patch"
   },
   "dependencies": {
-    "@aragon/os": "^4.4.0"
+    "@aragon/os": "^4.4.0",
+    "truffle-hdwallet-provider-privkey": "^0.3.0"
   },
   "devDependencies": {
     "@aragon/buidler-aragon": "^0.2.0",

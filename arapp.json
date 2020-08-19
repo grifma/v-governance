@@ -87,6 +87,11 @@
       "appName": "value-instrument.open.aragonpm.eth",
       "network": "rinkeby"
     },
+    "rinkebyjazz": {
+      "registry": "0x98df287b6c145399aaa709692c8d308357bc085d",
+      "appName": "value-instrument.open.aragonpm.eth",
+      "network": "rinkebyjazz"
+    },
     "staging": {
       "registry": "0xfe03625ea880a8cba336f9b5ad6e15b0a3b5a939",
       "appName": "value-instrument.aragonpm.eth",

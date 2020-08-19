@@ -3,7 +3,7 @@
   "author": "Marc Griffiths",
   "description": "Decentralised governance for Value Instrument based currencies",
   "details_url": "/meta/details.md",
-  "source_url": "https://<placeholder-repository-url>",
+  "source_url": "https://github.com/grifma/v-governance/",
   "icons": [
     {
       "src": "/meta/icon.svg",
