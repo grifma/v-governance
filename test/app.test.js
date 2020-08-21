@@ -30,43 +30,6 @@ const VICoin = artifacts.require("VICoin.sol");
 
 */
 
-// contract("VICoin", () => {
-//   before("deploy VICoin contract", async () => {
-//     const name = "VI Berlin",
-//       symbol = "VALUE",
-//       decimals = 6,
-//       lifetimeInBlocks = 10,
-//       generationAmount = 100,
-//       generationPeriod = 10,
-//       transactionFeePercentage = 0,
-//       communityContributionPercentage = 0,
-//       initialBalance = 200000000,
-//       communityContributionAccount =
-//         "0x0000000000000000000000000000000000000000",
-//       controller = "0x0000000000000000000000000000000000000000";
-
-//     const viCoin = await VICoin.new(
-//       VICoin,
-//       name,
-//       symbol,
-//       decimals,
-//       lifetimeInBlocks,
-//       generationAmount,
-//       generationPeriod,
-//       communityContributionPercentage,
-//       transactionFeePercentage,
-//       initialBalance,
-//       communityContributionAccount,
-//       controller
-//     );
-//     VICoin.setAsDeployed(viCoin);
-//   });
-
-//   it("is deployed", async () => {
-//     assert.equal(await viCoin.name(), "VI Berlin");
-//   });
-// });
-
 contract("VCommunityApp", ([appManager, user]) => {
   let appBase, app;
   let viCoinAddress = "0x0078371BDeDE8aAc7DeBfFf451B74c5EDB385Af7";
@@ -80,7 +43,6 @@ contract("VCommunityApp", ([appManager, user]) => {
     console.log("VCommunityApp");
     console.log(VCommunityApp);
     console.log("VICoin");
-    // console.log(VICoin);
     console.log(viCoinAddress);
   });
 
@@ -166,7 +128,7 @@ contract("VCommunityApp", ([appManager, user]) => {
     );
 
     // Initialize the app's proxy.
-    // await app.initialize(viCoin.address, "Initialized name -- app.test.js");
+    await app.initialize(viCoin.address, "Initialized name -- app.test.js");
   });
 
   it("does nothing", async () => {
