@@ -13,6 +13,8 @@ const reducer = (state) => {
       governedContractAddress: "0x0D13999edC23D3475Ed3FE22a15Cc7828FeCD762",
       name: "Name Not Set",
       totalSupply: 0,
+      communityContribution: 0,
+      transactionFee: 0,
     };
   }
   return state;

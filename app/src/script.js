@@ -23,6 +23,16 @@ app.store(
             ...nextState,
             governedContractAddress: await getGovernedContractAddress(),
           };
+        case "UpdateTransactionFee":
+          return {
+            ...nextState,
+            transactionFee: await getTransactionFee(),
+          };
+        case "UpdateCommunityContribution":
+          return {
+            ...nextState,
+            communityContribution: await getCommunityContribution(),
+          };
         case events.SYNC_STATUS_SYNCING:
           return { ...nextState, isSyncing: true };
         case events.SYNC_STATUS_SYNCED:
@@ -52,23 +62,28 @@ function initializeState() {
       name: await getName(),
       governedContractAddress: await getGovernedContractAddress(),
       totalSupply: await getTotalSupply(),
+      transactionFee: await getTransactionFee(),
+      communityContribution: await getCommunityContribution(),
     };
   };
 }
 
 async function getName() {
-  // return "Name";
   return await app.call("name").toPromise();
 }
 
 async function getGovernedContractAddress() {
-  // return "0x8401Eb5ff34cc943f096A32EF3d5113FEbE8D4Eb";
-  // console.log("===getGovernedContractAddress===");
-  // console.log(await app.call("viCoin").toPromise());
   return await app.call("viCoin").toPromise();
 }
 
 async function getTotalSupply() {
-  return 0;
-  // return await app.call("totalSupply").toPromise();
+  return await app.call("totalSupply").toPromise();
+}
+
+async function getTransactionFee() {
+  return await app.call("getTransactionFee").toPromise();
+}
+
+async function getCommunityContribution() {
+  return await app.call("getCommunityContribution").toPromise();
 }

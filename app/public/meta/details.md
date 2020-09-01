@@ -1,6 +1,6 @@
-An application for Aragon.
+V-Governance for Value Instrument based currencies.
 
 **Features**
-- Feature \#1.
-- Feature \#2.
-- Feature \#3.
+- Define governance of your Value Instrument currency.
+- Vote on adding new accounts, changing economic parameters, or increasing immutability.
+- Define trusted admins that have permission to make those decisions on behalf of your community.

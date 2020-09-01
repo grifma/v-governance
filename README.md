@@ -1,4 +1,13 @@
-# Aragon Buidler Boilerplate
+# V-Governance - Aragon based governance for a Value Instrument currency
+
+Decentralised governance for Value Instrument based currencies.
+
+- Define governance of your Value Instrument currency.
+- Vote on adding new accounts, changing economic parameters, or increasing immutability.
+- Define trusted admins that have permission to make those decisions on behalf of your community.
+
+
+# Based on Aragon Buidler Boilerplate
 
 > 🕵️ [Find more boilerplates using GitHub](https://github.com/search?q=topic:aragon-boilerplate) |
 > ✨ [Official boilerplates](https://github.com/search?q=topic:aragon-boilerplate+org:aragon)
@@ -7,16 +16,10 @@
 
 Buidler + React boilerplate for Aragon applications.
 
-## Running your app
+## Running the app
 
-To run the app in a browser with frontend and contract hot-reloading, simply run `npm start`.
+`npm start`
 
-1. Add code quality tools, like JS and contract linting. You may also want to check existing [buidler plugins](https://buidler.dev/plugins/).
-2. Develop your [AragonApp contract](https://hack.aragon.org/docs/aragonos-building)
-3. Develop your [frontend](https://ui.aragon.org/getting-started/)
-4. [Publish](https://hack.aragon.org/docs/guides-publish)!
-
-## What's in this boilerplate?
 
 ### npm Scripts
 
@@ -61,15 +64,16 @@ If you want an example of how to use these hooks, please see the [plugin's own t
 
 ## Structure
 
-This boilerplate has the following structure:
 
 ```md
 root
 ├── app
-├ ├── src
-├ └── package.json
+| ├── src
+| └── package.json
 ├── contracts
-├ └── CounterApp.sol
+| └── VCommunityApp.sol
+| └── interfaces
+|    └── IVICoinAdjustable
 ├── test
 ├── arapp.json
 ├── manifest.json
@@ -81,7 +85,7 @@ root
   - **src**: Source files.
   - [**package.json**](https://docs.npmjs.com/creating-a-package-json-file): Frontend npm configuration file.
 - **contracts**: Smart contracts folder.
-  - `CounterApp.sol`: AragonApp contract example.
+  - `VCommunityApp.sol`: Aragon app that interfaces with a Value Instrument currency.
 - **test**: Tests folder.
 - [**arapp.json**](https://hack.aragon.org/docs/cli-global-confg#the-arappjson-file): Aragon configuration file. Includes Aragon-specific metadata for your app.
 - [**manifest.json**](https://hack.aragon.org/docs/cli-global-confg#the-manifestjson-file): Aragon configuration file. Includes web-specific configuration.
